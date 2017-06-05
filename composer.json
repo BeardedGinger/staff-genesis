@@ -1,0 +1,12 @@
+{
+	"name": "limecuda/staff-genesis",
+	"description": "A Staff plugin that works well with Genesis themes which adds a Staff CPT, related meta, taxonomies for managing staff members and modifying the associated templates with updated schema and markup to work well with the new content type.",
+	"type": "wordpress-plugin",
+	"require": {
+		"webdevstudios/cpt-core":"*",
+		"webdevstudios/taxonomy_core":"*"
+	},
+	"suggest": {
+      "composer/installers": "~1.0"
+  }
+}
