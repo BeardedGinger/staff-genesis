@@ -30,7 +30,6 @@ if ( ! defined( 'LIMECUDA_STAFF_GENESIS_PLUGIN_URL' ) ) {
 	define( 'LIMECUDA_STAFF_GENESIS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 }
 
-
 /**
  * Run our plugin!
  */

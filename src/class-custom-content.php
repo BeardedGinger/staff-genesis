@@ -64,7 +64,30 @@ class Custom_Content {
 		$this->set_tax_variables();
 
 		register_via_cpt_core(
+			array(
+				$this->cpt_singular,
+				$this->cpt_plural,
+				$this->cpt_slug,
+			),
+			array(
+				'menu_icon'          => 'dashicons-groups',
+				'publicly_queryable' => true,
+				'hierarchical'       => false,
+				'rewrite'            => array( 'slug' => 'staff' ),
+				'supports'           => array( 'title', 'editor', 'thumbnail', 'genesis-cpt-archives-settings' ),
+			)
+		);
 
+		register_via_taxonomy_core(
+			array(
+				$this->tax_singular,
+				$this->tax_plural,
+				$this->tax_slug,
+			),
+			array(),
+			array(
+				$this->cpt_slug,
+			)
 		);
 
 	}
@@ -89,5 +112,12 @@ class Custom_Content {
 		$this->tax_plural   = apply_filters( 'staff_genesis_tax_plural', 'Departments' );
 		$this->tax_slug     = apply_filters( 'staff_genesis_tax_slug', 'lc-department' );
 
+	}
+
+	/**
+	 * Getter for the CPT slug.
+	 */
+	public function get_cpt_slug() {
+		return $this->cpt_slug;
 	}
 }
