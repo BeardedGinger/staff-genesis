@@ -18,12 +18,10 @@ class Template_Adjustments {
 	 */
 	public function adjust_it() {
 
-		$custom_content = new Custom_Content();
+		add_filter( 'genesis_attr_entry', array( $this, 'attr_entry' ) );
+		add_filter( 'genesis_attr_entry_title', array( $this, 'attr_entry_title' ) );
 
-		if ( is_singular( $custom_content->get_cpt_slug() ) ) {
-			add_filter( 'genesis_attr_entry', array( $this, 'attr_entry' ) );
-			add_filter( 'genesis_attr_entry_title', array( $this, 'attr_entry_title' ) );
-		}
+		add_action( 'genesis_entry_header', array( $this, 'template_defaults' ), 0 );
 
 	}
 
@@ -33,6 +31,9 @@ class Template_Adjustments {
 	 * @param array $attributes The existing attributes for the section.
 	 */
 	public function attr_entry( $attributes ) {
+
+		if ( ! is_singular( Custom_Content::instance()->get_cpt_slug() ) )
+			return $attributes;
 
 		$attributes['itemtype'] = 'http://schema.org/Person';
 		return $attributes;
@@ -46,8 +47,106 @@ class Template_Adjustments {
 	 */
 	public function attr_entry_title( $attributes ) {
 
+		if ( ! is_singular( Custom_Content::instance()->get_cpt_slug() ) )
+			return $attributes;
+
 		$attributes['itemprop'] = 'name';
 		return $attributes;
+
+	}
+
+	/**
+	 * Handle the setup/remove of genesis defaults for our page template.
+	 */
+	public function template_defaults() {
+
+		if ( ! is_singular( Custom_Content::instance()->get_cpt_slug() ) )
+			return;
+
+		remove_action( 'genesis_entry_header', 'genesis_post_info', 12 );
+
+		add_action( 'genesis_entry_header',  array( $this, 'position'      ) );
+		add_action( 'genesis_entry_content', array( $this, 'headshot'      ), 5 );
+		add_action( 'lc_sg_after_headshot',  array( $this, 'meta'          ) );
+		add_action( 'genesis_entry_content', array( $this, 'close_content' ) );
+
+	}
+
+	/**
+	 * Add the position / job title below the staff members name.
+	 */
+	public function position() {
+
+		if ( ! function_exists( 'get_field' ) )
+			return;
+
+		$position = get_field( 'position' );
+
+		if ( $position ) {
+			echo '<span class="position" itemprop="jobTitle">' . esc_attr( $position ) . '</span>';
+		}
+	}
+
+
+	/**
+	 * Output the staff memeber headshot and include markup for controlling layout.
+	 */
+	public function headshot() {
+
+		if ( has_post_thumbnail() ) {
+		?>
+
+			<div class="one-third first">
+
+				<div class="headshot">
+					<?php the_post_thumbnail(); ?>
+				</div>
+
+				<?php do_action( 'lc_sg_after_headshot' ); ?>
+			</div>
+
+			<div class="two-thirds">
+
+		<?php
+		}
+
+		do_action( 'lc_sg_before_bio' );
+
+	}
+
+	/**
+	 * Add the meta below the staff member image.
+	 */
+	public function meta() {
+
+		if ( ! function_exists( 'get_field' ) )
+			return;
+
+		if ( $email = get_field( 'email' ) ) {
+			echo '<span class="email" itemprop="email"><a href="mailto:' . esc_attr( $email ) . '"><i class="fa fa-envelope"></i> ' . esc_attr( $email ) . '</a></span>';
+		}
+
+		if ( $phone = get_field( 'phone_number' ) ) {
+			echo '<span class="phone" itemprop="telephone"><a href="tel:' . esc_attr( $phone ) . '"><i class="fa fa-phone"></i> ' . esc_attr( $phone ) . '</a></span>';
+		}
+	}
+
+	/**
+	 * Close content if we opened if for the headshot.
+	 */
+	public function close_content() {
+
+		do_action( 'lc_sg_after_bio' );
+
+		if ( has_post_thumbnail() ) {
+		?>
+
+			</div>
+
+		<?php
+		}
+
+		do_action( 'lc_sg_after_content' );
 
 	}
 }

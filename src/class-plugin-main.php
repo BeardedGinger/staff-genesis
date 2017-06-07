@@ -25,11 +25,7 @@ class Main {
 		$assets = new Assets();
 		$assets->enqueue();
 
-		// Register our content.
-		$custom_content = new Custom_Content();
-		$custom_content->register_custom_content();
-
-		add_action( 'genesis_init', array( $this, 'template_adjustments' ), 99 );
+		add_action( 'genesis_init', array( $this, 'template_adjustments' ), 20 );
 
 	}
 
@@ -40,6 +36,7 @@ class Main {
 
 		require_once( LIMECUDA_STAFF_GENESIS_PLUGIN_DIR . 'src/class-plugin-assets.php' );
 		require_once( LIMECUDA_STAFF_GENESIS_PLUGIN_DIR . 'src/class-custom-content.php' );
+		require_once( LIMECUDA_STAFF_GENESIS_PLUGIN_DIR . 'src/includes/acf-meta.php' );
 		require_once( LIMECUDA_STAFF_GENESIS_PLUGIN_DIR . 'src/class-template-adjustments.php' );
 
 	}

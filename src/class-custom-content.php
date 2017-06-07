@@ -32,7 +32,7 @@ class Custom_Content {
 	 *
 	 * @var string
 	 */
-	protected $cpt_slug;
+	public $cpt_slug;
 
 	/**
 	 * The Department Taxonomy Singular.
@@ -53,12 +53,32 @@ class Custom_Content {
 	 *
 	 * @var string
 	 */
-	protected $tax_slug;
+	private $tax_slug;
+
+	/**
+	 * Instance of this class.
+	 *
+	 * @var object
+	 */
+	protected static $instance;
+
+	/**
+	 * Used for getting an instance of this class
+	 *
+	 * @since 0.1.0
+	 */
+	public static function instance() {
+		if ( empty( self::$instance ) ) {
+			self::$instance = new self();
+		}
+
+		return self::$instance;
+	}
 
 	/**
 	 * Register the CPTs and Taxonomies
 	 */
-	public function register_custom_content() {
+	public function __construct() {
 
 		$this->set_cpt_variables();
 		$this->set_tax_variables();
@@ -97,7 +117,7 @@ class Custom_Content {
 	 */
 	private function set_cpt_variables() {
 
-		$this->cpt_singular = apply_filters( 'staff_genesis_cpt_singular', 'Staff' );
+		$this->cpt_singular = apply_filters( 'staff_genesis_cpt_singular', 'Staff Member' );
 		$this->cpt_plural   = apply_filters( 'staff_genesis_cpt_plural', 'Staff Members' );
 		$this->cpt_slug     = apply_filters( 'staff_genesis_cpt_slug', 'lc-staff' );
 
@@ -121,3 +141,5 @@ class Custom_Content {
 		return $this->cpt_slug;
 	}
 }
+
+new Custom_Content();
