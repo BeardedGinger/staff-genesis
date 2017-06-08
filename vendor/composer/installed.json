@@ -1,0 +1,83 @@
+[
+    {
+        "name": "webdevstudios/cpt-core",
+        "version": "v1.0.1",
+        "version_normalized": "1.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/WebDevStudios/CPT_Core.git",
+            "reference": "3f73135702b4331194a8e43311e940663840ead2"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/WebDevStudios/CPT_Core/zipball/3f73135702b4331194a8e43311e940663840ead2",
+            "reference": "3f73135702b4331194a8e43311e940663840ead2",
+            "shasum": ""
+        },
+        "suggest": {
+            "composer/installers": "~1.0"
+        },
+        "time": "2016-02-27T20:22:54+00:00",
+        "type": "wordpress-plugin",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "CPT_Core.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPLv2"
+        ],
+        "authors": [
+            {
+                "name": "WebDevStudios",
+                "email": "contact@webdevstudios.com",
+                "homepage": "https://github.com/WebDevStudios",
+                "role": "Developer"
+            }
+        ],
+        "description": "WordPress Custom Post Type OO wrapper",
+        "homepage": "https://github.com/WebDevStudios/CPT_Core",
+        "keywords": [
+            "metabox",
+            "plugin",
+            "wordpress"
+        ]
+    },
+    {
+        "name": "webdevstudios/taxonomy_core",
+        "version": "v0.2.4",
+        "version_normalized": "0.2.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/WebDevStudios/Taxonomy_Core.git",
+            "reference": "80393ecb126d24ef3940ab7fa06635fe782701d8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/WebDevStudios/Taxonomy_Core/zipball/80393ecb126d24ef3940ab7fa06635fe782701d8",
+            "reference": "80393ecb126d24ef3940ab7fa06635fe782701d8",
+            "shasum": ""
+        },
+        "time": "2016-02-27T20:21:38+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "Taxonomy_Core.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPLv2"
+        ],
+        "authors": [
+            {
+                "name": "WebDevStudios",
+                "email": "contact@webdevstudios.com"
+            }
+        ],
+        "description": "A tool to make custom taxonomy registration just a bit simpler. Automatically registers taxonomy labels, and provides helpful methods."
+    }
+]
