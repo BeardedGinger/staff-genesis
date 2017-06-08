@@ -12,7 +12,7 @@ if ( function_exists( 'get_field' ) ) {
 }
 ?>
 
-<div class="staff-member">
+<div class="staff-member lc-sg-col-<?php echo esc_attr( $settings->columns ); ?>">
 
 	<div class="staff-member__headshot">
 		<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( 'lc-sg-headshot' ); ?></a>

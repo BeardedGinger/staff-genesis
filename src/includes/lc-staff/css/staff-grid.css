@@ -1,0 +1,21 @@
+.staff-member {
+	float: left;
+	margin: 10px 1.5%;
+}
+
+.lc-sg-col-2 {
+	width: 47%;
+}
+
+.lc-sg-col-3 {
+	width: 31%;
+}
+
+.lc-sg-col-4 {
+	width: 22%;
+}
+
+.staff-member__info__name {
+	clear: both;
+	display: block;
+}

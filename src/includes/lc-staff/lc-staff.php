@@ -23,6 +23,9 @@ class LimeCuda_Staff extends FLBuilderModule {
 			'dir'           => LIMECUDA_STAFF_GENESIS_PLUGIN_DIR . 'src/includes/lc-staff',
 			'url'           => LIMECUDA_STAFF_GENESIS_PLUGIN_URL . 'src/includes/lc-staff',
 		) );
+
+		$this->add_css( 'bb-staff', $this->url . 'css/staff-grid.css' );
+
 	}
 }
 
