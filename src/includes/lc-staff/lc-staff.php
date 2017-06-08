@@ -68,6 +68,11 @@ FLBuilder::register_module( 'LimeCuda_Staff', array(
 							'carousel' => __( 'Carousel', 'lc_staff_genesis' ),
 						),
 					),
+					'columns' => array(
+						'label'   => __( 'Number of Columns', 'lc_staff_genesis' ),
+						'type'    => 'unit',
+						'default' => 3,
+					),
 				),
 			),
 		),
