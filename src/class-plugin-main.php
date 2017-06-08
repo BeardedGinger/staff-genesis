@@ -26,6 +26,7 @@ class Main {
 		$assets->enqueue();
 
 		add_action( 'genesis_init', array( $this, 'template_adjustments' ), 20 );
+		add_action( 'init', array( $this, 'bb_module' ) );
 
 	}
 
@@ -37,6 +38,8 @@ class Main {
 		require_once( LIMECUDA_STAFF_GENESIS_PLUGIN_DIR . 'src/class-plugin-assets.php' );
 		require_once( LIMECUDA_STAFF_GENESIS_PLUGIN_DIR . 'src/class-custom-content.php' );
 		require_once( LIMECUDA_STAFF_GENESIS_PLUGIN_DIR . 'src/includes/acf-meta.php' );
+
+		require_once( LIMECUDA_STAFF_GENESIS_PLUGIN_DIR . 'src/includes/functions/general.php' );
 		require_once( LIMECUDA_STAFF_GENESIS_PLUGIN_DIR . 'src/class-template-adjustments.php' );
 
 	}
@@ -48,6 +51,17 @@ class Main {
 
 		$adjustments = new Template_Adjustments();
 		$adjustments->adjust_it();
+
+	}
+
+	/**
+	 * Get the Beaver Builder Module if we have the Beav on the site.
+	 */
+	public function bb_module() {
+
+		if ( class_exists( 'FLBuilderModule' ) ) {
+			require_once( LIMECUDA_STAFF_GENESIS_PLUGIN_DIR . 'src/includes/lc-staff/lc-staff.php' );
+		}
 
 	}
 }

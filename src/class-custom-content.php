@@ -32,7 +32,7 @@ class Custom_Content {
 	 *
 	 * @var string
 	 */
-	public $cpt_slug;
+	protected $cpt_slug;
 
 	/**
 	 * The Department Taxonomy Singular.
@@ -53,7 +53,7 @@ class Custom_Content {
 	 *
 	 * @var string
 	 */
-	private $tax_slug;
+	protected $tax_slug;
 
 	/**
 	 * Instance of this class.
@@ -139,6 +139,20 @@ class Custom_Content {
 	 */
 	public function get_cpt_slug() {
 		return $this->cpt_slug;
+	}
+
+	/**
+	 * Getter for the Tax Singular.
+	 */
+	public function get_tax_singular() {
+		return $this->tax_singular;
+	}
+
+	/**
+	 * Getter for the Tax slug.
+	 */
+	public function get_tax_slug() {
+		 return $this->tax_slug;
 	}
 }
 

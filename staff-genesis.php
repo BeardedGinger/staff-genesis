@@ -27,7 +27,7 @@ if ( ! defined( 'LIMECUDA_STAFF_GENESIS_PLUGIN_DIR' ) ) {
 }
 
 if ( ! defined( 'LIMECUDA_STAFF_GENESIS_PLUGIN_URL' ) ) {
-	define( 'LIMECUDA_STAFF_GENESIS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+	define( 'LIMECUDA_STAFF_GENESIS_PLUGIN_URL', plugins_url( '/', __FILE__ ) );
 }
 
 /**
