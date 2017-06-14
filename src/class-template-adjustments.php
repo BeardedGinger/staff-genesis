@@ -65,28 +65,12 @@ class Template_Adjustments {
 
 		remove_action( 'genesis_entry_header', 'genesis_post_info', 12 );
 
+		add_action( 'genesis_entry_header',  array( $this, 'headshot'      ), 3 );
 		add_action( 'genesis_entry_header',  array( $this, 'position'      ) );
-		add_action( 'genesis_entry_content', array( $this, 'headshot'      ), 5 );
 		add_action( 'lc_sg_after_headshot',  array( $this, 'meta'          ) );
 		add_action( 'genesis_entry_content', array( $this, 'close_content' ) );
 
 	}
-
-	/**
-	 * Add the position / job title below the staff members name.
-	 */
-	public function position() {
-
-		if ( ! function_exists( 'get_field' ) )
-			return;
-
-		$position = get_field( 'position' );
-
-		if ( $position ) {
-			echo '<span class="position" itemprop="jobTitle">' . esc_attr( $position ) . '</span>';
-		}
-	}
-
 
 	/**
 	 * Output the staff memeber headshot and include markup for controlling layout.
@@ -112,6 +96,21 @@ class Template_Adjustments {
 
 		do_action( 'lc_sg_before_bio' );
 
+	}
+
+	/**
+	 * Add the position / job title below the staff members name.
+	 */
+	public function position() {
+
+		if ( ! function_exists( 'get_field' ) )
+			return;
+
+		$position = get_field( 'position' );
+
+		if ( $position ) {
+			echo '<span class="position" itemprop="jobTitle">' . esc_attr( $position ) . '</span>';
+		}
 	}
 
 	/**
