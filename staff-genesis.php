@@ -4,7 +4,7 @@
  * Plugin URI:          https://fewerthanthree.com
  * Description:         Create a seamless "Staff" section for your Genesis powered site.
  * Author:              LimeCuda
- * Version:             0.3.0
+ * Version:             0.3.1
  * Author URI:          https://fewerthanthree.com
  * GitHub Plugin URI:   https://github.com/BeardedGinger/staff-genesis
  *
@@ -19,7 +19,7 @@ if ( ! defined( 'WPINC' ) ) {
 require_once( 'vendor/autoload.php' );
 
 if ( ! defined( 'LIMECUDA_STAFF_GENESIS_VERSION' ) ) {
-	define( 'LIMECUDA_STAFF_GENESIS_VERSION', '0.3.0' );
+	define( 'LIMECUDA_STAFF_GENESIS_VERSION', '0.3.1' );
 }
 
 if ( ! defined( 'LIMECUDA_STAFF_GENESIS_PLUGIN_DIR' ) ) {
