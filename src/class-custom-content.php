@@ -94,6 +94,7 @@ class Custom_Content {
 				'publicly_queryable' => true,
 				'hierarchical'       => false,
 				'rewrite'            => array( 'slug' => 'staff' ),
+				'rest_base'          => 'staff',
 				'supports'           => array( 'title', 'editor', 'thumbnail', 'genesis-cpt-archives-settings' ),
 			)
 		);
