@@ -8,7 +8,7 @@
 $args = array(
 	'post_type'      => LimeCuda\Staff_Genesis\Custom_Content::instance()->get_cpt_slug(),
 	'posts_per_page' => $settings->count,
-	'order'          => 'DESC',
+	'order'          => 'ASC',
 	'orderby'        => 'menu_order',
 );
 
