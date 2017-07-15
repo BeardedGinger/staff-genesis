@@ -76,24 +76,27 @@ class Template_Adjustments {
 	 * Output the staff memeber headshot and include markup for controlling layout.
 	 */
 	public function headshot() {
-
-		if ( has_post_thumbnail() ) {
 		?>
 
 			<div class="one-third first">
 
-				<div class="headshot">
-					<?php the_post_thumbnail(); ?>
-				</div>
+				<?php
+				if ( has_post_thumbnail() ) { ?>
+
+					<div class="headshot">
+						<?php the_post_thumbnail(); ?>
+					</div>
+
+				<?php
+				} ?>
 
 				<?php do_action( 'lc_sg_after_headshot' ); ?>
+
 			</div>
 
 			<div class="two-thirds">
 
 		<?php
-		}
-
 		do_action( 'lc_sg_before_bio' );
 
 	}
@@ -128,6 +131,8 @@ class Template_Adjustments {
 		if ( $phone = get_field( 'phone_number' ) ) {
 			echo '<span class="phone" itemprop="telephone"><a href="tel:' . esc_attr( $phone ) . '"><i class="fa fa-phone"></i> ' . esc_attr( $phone ) . '</a></span>';
 		}
+
+		do_action( 'lc_sg_after_meta' );
 	}
 
 	/**
